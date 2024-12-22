@@ -85,7 +85,7 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 - **2.a** `dailyactivity_merged`:
   - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing.
-  - Remove the 'LoggedActivitiesDistance' column, as it contains data for only 13 out of 941 entries and is not relevant to the analysis.
+  - Remove the *'LoggedActivitiesDistance'* column, as it contains data for only 13 out of 941 entries and is not relevant to the analysis.
   - Ensure activity types are categorized uniformly.
 
 - **2.b** `dailycalories_merged`:
