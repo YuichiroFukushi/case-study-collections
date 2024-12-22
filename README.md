@@ -50,14 +50,12 @@ I will be using this dataset to begin the data analysis process: first by cleani
 
 ### ⚠️ Limitations
 
-- Sample size: 30 people is not a large enough sample to be
-  representative of all FitBit users
-- Outdated: The dataset contains data from a one month period in 2016
-  only. For a deeper and more accurate analysis of trends, we would need
-  data from the current year, preferably collected for an entire year to
-  look at if trends vary during different times of year.
-- Limited: The dataset does not contain any demographic information
-  about the users, including gender, age, or location, which would be
-  beneficial for marketing purposes to target specific customers
+- The dataset is limited as it lacks demographic details such as gender, age, and location, which are crucial for creating targeted marketing strategies.
+- The sample size of 30 participants is too small to represent all Fitbit users effectively.
+- The data is outdated, covering only a one-month period in 2016. For a more accurate analysis of trends, data from the current year and spanning an entire year would be preferable to observe seasonal variations.
+
+---
+
+
 
 
