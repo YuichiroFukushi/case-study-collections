@@ -77,7 +77,7 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 - `sleepday_merged`
 - `weightLogInfo_merged`
 
-**2.** I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are outlined below:
+**2.** I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are showned below:
 
 - 2.a `dailyactivity_merged`:
   - I excluded the columns `LoggedActivitiesDistance` and `SedentaryActiveDistance` due to their limited entries, which made them irrelevant for the analysis. Out of 940 entries, `LoggedActivitiesDistance` had only 32 values, and `SedentaryActiveDistance` had 84. Additionally, I rounded all `FLOAT` data typ
@@ -130,6 +130,8 @@ AND activity.ActivityDate = calories.ActivityDay -- Note: The ActivityDate colum
 | 4   | 3108     | 3108       |
 | 5   | 3846     | 3846       |
 
+***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+
 ```sql
 SELECT 
   activity.SedentaryMinutes,
@@ -155,6 +157,8 @@ AND activity.ActivityDate = intensities.ActivityDay -- Note: The ActivityDate co
 | 4   | 1131             | 217                  | 19                  | 73                | 1131               | 217                    | 19                    | 73                   |
 | 5   | 708              | 214                  | 27                  | 53                | 708                | 214                    | 27                    | 53                   |
 
+***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+
 ```sql
 SELECT 
   activity.TotalSteps,
@@ -174,7 +178,7 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 | 4   | 9405       | 9405      |
 | 5   | 18213      | 18213     |
 
-***Note:*** The tables above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
 
 
