@@ -10,7 +10,7 @@ Yuichiro Fukushi<br>12-22-2024
 - 🧑‍💼 [**Background Information**](#background-information) – Overview of the company and its growth.
 - 📊 [**Business Task**](#business-task) – Overview of the main business problem.
 - 📋 [**About the Data**](#about-the-data) – Description of the dataset used in the analysis.
-- ⚠️ [**Limitations**](#limitations) – Constraints and challenges faced in the analysis.
+- ⚠️ [**Data Limitations**](#Data-limitations) – Constraints and challenges faced in the analysis.
 
 ---
 
@@ -48,7 +48,7 @@ Sršen suggested using public data on smart device users' daily habits for analy
 
 I will be using this dataset to begin the data analysis process: first by cleaning the data using SQL, and then transferring the cleaned data to RStudio for deeper analysis and visualization.
 
-### ⚠️ Limitations
+### ⚠️ Data Limitations
 
 - The dataset is limited as it lacks demographic details such as gender, age, and location, which are crucial for creating targeted marketing strategies.
 - The sample size of 30 participants is too small to represent all Fitbit users effectively.
