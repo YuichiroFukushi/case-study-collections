@@ -81,25 +81,22 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 - `dailysteps_merged`
 
 
-2. Before transferring the datasets to BigQuery, I will clean each dataset using Google Sheets. This process involves filtering the data required for the analysis and ensuring that all data is consistent and properly formatted to avoid errors during migration. The cleaning steps for each dataset are as follows:
+2. I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are outlined below:
 
 - **2.a** `dailyactivity_merged`:
-  - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing.
-  - Remove the *'LoggedActivitiesDistance'* column, as it contains data for only 13 out of 941 entries and is not relevant to the analysis.
+  - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing. I used the `INNER JOIN` statement to check if the data matched based on user IDs and activity dates. Below is the query I executed.
+
+```sql
+SELECT 
+  activity.calories,
+  calories.calories
+FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.dailyactivity` activity
+INNER JOIN `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.dailycalories` calories
+ON activity.id = calories.id 
+AND activity.ActivityDate = calories.ActivityDay
+```
+
+  - FIltered out the *'LoggedActivitiesDistance'* column, as it contains data for only 13 out of 941 entries and is not relevant to the analysis.
   - Ensure activity types are categorized uniformly.
 
-- **2.b** `dailycalories_merged`:
-  - Remove rows with missing or incomplete calorie data.
-  - Align calorie data to match the corresponding activity and time stamps.
-  - Format calorie values to a consistent unit (e.g., kcal).
-
-- **2.c** `dailyIntensities_merged`:
-  - Remove entries with no intensity data recorded.
-  - Normalize intensity values to ensure uniformity.
-  - Ensure that intensity categories (e.g., low, medium, high) are standardized.
-
-- **2.d** `dailysteps_merged`:
-  - Filter out invalid or zero step counts.
-  - Ensure that step data aligns with the corresponding dates and times.
-  - Format the step count data to ensure consistency across datasets.
 
