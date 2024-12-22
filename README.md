@@ -74,12 +74,18 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 - `dailycalories_merged`
 - `dailyIntensities_merged`
 - `dailysteps_merged`
+- `sleepday_merged`
+- `weightLogInfo_merged`
+- `dailysteps_merged`
+- `dailysteps_merged`
+- `dailysteps_merged`
+
 
 2. Before transferring the datasets to BigQuery, I will clean each dataset using Google Sheets. This process involves filtering the data required for the analysis and ensuring that all data is consistent and properly formatted to avoid errors during migration. The cleaning steps for each dataset are as follows:
 
 - **2.a** `dailyactivity_merged`:
-  - Filter out irrelevant columns and focus on activity-related data.
-  - Standardize date and time formats for consistency.
+  - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing.
+  - Remove the 'LoggedActivitiesDistance' column, as it contains data for only 13 out of 941 entries and is not relevant to the analysis.
   - Ensure activity types are categorized uniformly.
 
 - **2.b** `dailycalories_merged`:
