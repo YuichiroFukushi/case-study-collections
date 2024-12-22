@@ -50,7 +50,7 @@ I will be using this dataset to begin the data analysis process: first by cleani
 
 ### ⚠️ Data Limitations
 
-Does this data **ROCCC**(a framework evaluating Reliability, Originality, Comprehensiveness, Currency, and Citation)?
+Does this data **ROCCC** (a framework evaluating Reliability, Originality, Comprehensiveness, Currency, and Citation)?
 
 - Reliability – The dataset's small sample size of only 30 participants is insufficient to accurately represent the broader population of female Fitbit users.
 - Originality – The data is not original, as it was obtained from a third-party provider, Amazon Mechanical Turk, rather than through direct collection.
