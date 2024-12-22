@@ -1,7 +1,6 @@
 Bellabeat Case Study with SQL and R
 ================
-Yuichiro Fukushi
-12-22-2024
+Yuichiro Fukushi<br>12-22-2024
 
 # 📚 Case Study Table of Contents
 
