@@ -96,7 +96,7 @@ ON activity.id = calories.id
 AND activity.ActivityDate = calories.ActivityDay -- Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailycalories table
 ```
 
-### Query Results
+### Query Result:
 | SedentaryMinutes (activity) | LightlyActiveMinutes (activity) | FairlyActiveMinutes (activity) | VeryActiveMinutes (activity) | SedentaryMinutes (intensities) | LightlyActiveMinutes (intensities) | FairlyActiveMinutes (intensities) | VeryActiveMinutes (intensities) |
 |-----------------------------|---------------------------------|--------------------------------|------------------------------|-------------------------------|-----------------------------------|----------------------------------|--------------------------------|
 | 120                         | 180                             | 60                             | 45                           | 120                           | 180                               | 60                               | 45                             |
@@ -120,6 +120,14 @@ INNER JOIN `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailyintensitie
 ON activity.id = intensities.id 
 AND activity.ActivityDate = intensities.ActivityDay
 ```
+
+### Query Result:
+| SedentaryMinutes (activity) | LightlyActiveMinutes (activity) | FairlyActiveMinutes (activity) | VeryActiveMinutes (activity) | SedentaryMinutes (intensities) | LightlyActiveMinutes (intensities) | FairlyActiveMinutes (intensities) | VeryActiveMinutes (intensities) |
+|-----------------------------|---------------------------------|--------------------------------|------------------------------|-------------------------------|-----------------------------------|----------------------------------|--------------------------------|
+| 120                         | 180                             | 60                             | 45                           | 120                           | 180                               | 60                               | 45                             |
+| 130                         | 170                             | 70                             | 40                           | 130                           | 170                               | 70                               | 40                             |
+| 140                         | 160                             | 80                             | 50                           | 140                           | 160                               | 80                               | 50                             |
+| 110                         | 190                             | 65                             | 60                           | 110                           | 190                               | 65                               | 60                             |
 
 
 
