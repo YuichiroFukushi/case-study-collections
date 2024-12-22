@@ -169,7 +169,7 @@ ON activity.id = steps.id
 AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailysteps table
 ```
 
-### Query Result:
+***Query Result:***
 | Row | TotalSteps | StepTotal |
 |-----|------------|-----------|
 | 1   | 36019      | 36019     |
