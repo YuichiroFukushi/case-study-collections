@@ -67,3 +67,11 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 ## **🔧 Data Analysis** 
 
 ### 📋 Data Preparation
+
+1. The datasets were downloaded in a zip file, from which 18 CSV files were extracted, each representing a separate dataset. For this analysis, the following four datasets will be used:
+
+- `dailyactivity_merged`
+- `dailycalories_merged`
+- `dailyIntensities_merged`
+- `dailysteps_merged`
+
