@@ -178,7 +178,7 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 | 4   | 9405       | 9405      |
 | 5   | 18213      | 18213     |
 
-***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+**Note:** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
 
 
