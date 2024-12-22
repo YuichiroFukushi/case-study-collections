@@ -68,7 +68,7 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 ### 📋 Data Preparation
 
-1. The datasets were downloaded in a zip file, from which 18 CSV files were extracted, each representing a separate dataset. For this analysis, the following four datasets will be used:
+**1.** The datasets were downloaded in a zip file, from which 18 CSV files were extracted, each representing a separate dataset. For this analysis, the following four datasets will be used:
 
 - `dailyactivity_merged`
 - `dailycalories_merged`
@@ -81,9 +81,9 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 - `dailysteps_merged`
 
 
-2. I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are outlined below:
+**2.** I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are outlined below:
 
-- **2.a** `dailyactivity_merged`:
+- 2.a `dailyactivity_merged`:
   - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing. I used the `INNER JOIN` statement to check if the data matched based on user IDs and activity dates. Below is the query I executed.
 
 ```sql
