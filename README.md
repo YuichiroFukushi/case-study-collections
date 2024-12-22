@@ -26,7 +26,9 @@ Yuichiro Fukushi<br>12-22-2024
 
 ---
 
-## 🧑‍💼 Background Information
+## **Company and Data Overview** 
+
+### 🧑‍💼 Background Information
 
 **Bellabeat** is a high-tech company founded by Urška Sršen and Sando Mur in 2013, specializing in health-focused smart products designed for women. Leveraging Sršen's background as an artist, Bellabeat has created beautifully designed technology that empowers women by providing insights into their health and habits, including activity, sleep, stress, and reproductive health data.
 
@@ -62,6 +64,6 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 ---
 
-
+## Data Preparation
 
 
