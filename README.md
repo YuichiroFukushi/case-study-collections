@@ -2,15 +2,15 @@ Bellabeat Case Study with SQL and R
 ================
 Yuichiro Fukushi<br>12-22-2024
 
-# 📚 Case Study Table of Contents
+# 📚 Table of Contents
 
 ---
 
 ## **Company and Data Overview**  
-- 🧑‍💼 [**Background Information**](#background-information) – Overview of the company and its growth.
-- 📊 [**Business Task**](#business-task) – Overview of the main business problem.
-- 📋 [**About the Data**](#about-the-data) – Description of the dataset used in the analysis.
-- ⚠️ [**Data Limitations**](#Data-limitations) – Constraints and challenges faced in the analysis.
+- 🧑‍💼 [**Background Information**](#🧑‍💼-background-information) – Overview of the company and its growth.
+- 📊 [**Business Task**](#📊-business-task) – Overview of the main business problem.
+- 📋 [**About the Data**](#📋-about-the-data) – Description of the dataset used in the analysis.
+- ⚠️ [**Data Limitations**](#⚠️-Data-limitations) – Constraints and challenges faced in the analysis.
 
 ---
 
