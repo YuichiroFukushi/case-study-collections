@@ -6,7 +6,7 @@ Yuichiro Fukushi<br>12-22-2024
 
 ---
 
-## **Company and Data Overview**  
+## **🏢 Company and Data Overview**  
 - 🧑‍💼 [**Background Information**](#-background-information) – Overview of the company and its growth.
 - 📊 [**Business Task**](#-business-task) – Overview of the main business problem.
 - 📋 [**About the Data**](#-about-the-data) – Description of the dataset used in the analysis.
@@ -26,7 +26,7 @@ Yuichiro Fukushi<br>12-22-2024
 
 ---
 
-## **Company and Data Overview** 
+## **🏢 Company and Data Overview** 
 
 ### 🧑‍💼 Background Information
 
