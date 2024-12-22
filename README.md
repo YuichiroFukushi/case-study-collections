@@ -83,7 +83,36 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 **2.** I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are outlined below:
 
-- 2.a `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged`:
+- 2.a `dailyactivity_merged`:
+  - I cleaned and filtered out columns that were not relevant to the analysis, specifically `LoggedActivitiesDistance` and `SedentaryActiveDistance`. Additionally, I rounded all `FLOAT` data types to two decimal places to enhance readability and maintain uniformity.
+
+```sql
+SELECT 
+  id,
+  ActivityDate,
+  TotalSteps,
+  ROUND(TotalDistance, 2) AS TotalDistance,
+  ROUND(TrackerDistance, 2) AS TrackerDistance,
+  ROUND(VeryActiveDistance, 2) AS VeryActiveDistance,
+  ROUND(ModeratelyActiveDistance, 2) AS ModeratelyActiveDistance,
+  ROUND(LightActiveDistance, 2) AS LightActiveDistance,
+  VeryActiveMinutes,
+  FairlyActiveMinutes,
+  SedentaryMinutes,
+  Calories
+FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailyactivity`
+```
+
+### Query Result:
+| Row | id          | ActivityDate | TotalSteps | TotalDistance | TrackerDistance | VeryActiveDistance | ModeratelyActiveDistance | LightActiveDistance | VeryActiveMinutes | FairlyActiveMinutes | SedentaryMinutes | Calories |
+|-----|-------------|--------------|------------|---------------|-----------------|---------------------|--------------------------|--------------------|-------------------|---------------------|------------------|----------|
+| 1   | 1624580081  | 2016-05-01   | 36019      | 28.03         | 28.03           | 21.92              | 4.19                    | 1.91               | 186               | 63                  | 1020             | 2690     |
+| 2   | 1644430081  | 2016-04-14   | 11037      | 8.02          | 8.02            | 0.36               | 2.56                    | 5.1                | 5                 | 58                  | 1125             | 3226     |
+| 3   | 1644430081  | 2016-04-19   | 11256      | 8.18          | 8.18            | 0.36               | 2.53                    | 5.3                | 5                 | 58                  | 1099             | 3300     |
+| 4   | 1644430081  | 2016-04-28   | 9405       | 6.84          | 6.84            | 0.2                | 2.32                    | 4.31               | 3                 | 53                  | 1157             | 3108     |
+| 5   | 1644430081  | 2016-04-30   | 18213      | 13.24         | 13.24           | 0.63               | 3.14                    | 9.46               | 9                 | 71                  | 816              | 3846     |
+
+- 2.b `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged`:
   - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing. I used the `INNER JOIN` statement to check if the data matched based on user IDs and activity dates. Below is the query I executed:
 
 ```sql
@@ -149,7 +178,10 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 | 4   | 9405       | 9405      |
 | 5   | 18213      | 18213     |
 
-<span style="color: green;">**Note:** The tables above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.</span>
+***Note:*** The tables above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+
+
+
 
 
 
