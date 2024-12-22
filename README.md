@@ -50,9 +50,15 @@ I will be using this dataset to begin the data analysis process: first by cleani
 
 ### ⚠️ Data Limitations
 
-- The dataset is limited as it lacks demographic details such as gender, age, and location, which are crucial for creating targeted marketing strategies.
-- The sample size of 30 participants is too small to represent all Fitbit users effectively.
-- The data is outdated, covering only a one-month period in 2016. For a more accurate analysis of trends, data from the current year and spanning an entire year would be preferable to observe seasonal variations.
+Does this data **ROCCC**(a framework evaluating Reliability, Originality, Comprehensiveness, Currency, and Citation)?
+
+- Reliability – The dataset's small sample size of only 30 participants is insufficient to accurately represent the broader population of female Fitbit users.
+- Originality – The data is not original, as it was obtained from a third-party provider, Amazon Mechanical Turk, rather than through direct collection.
+- Comprehensiveness – The dataset lacks critical demographic details such as gender, age, and health conditions. Its non-random nature and inherent bias further diminish its accuracy and objectivity.
+- Currency – The data is outdated, having been collected seven years ago, making it unsuitable for analyzing current trends.
+- Citation – The source is not well-documented, as the dataset is attributed to an unspecified third-party provider (Amazon Mechanical Turk).
+
+Based on these factors, the dataset does not meet the ROCCC criteria.
 
 ---
 
