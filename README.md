@@ -68,7 +68,7 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 ### 📋 Data Preparation
 
-**1.** The datasets were downloaded in a zip file, from which 18 CSV files were extracted, each representing a separate dataset. For this analysis, the following four datasets will be used:
+**1.** The datasets were downloaded in a zip file, from which 18 CSV files were extracted, each representing a separate dataset. For this analysis, the following six datasets will be used:
 
 - `dailyactivity_merged`
 - `dailycalories_merged`
@@ -76,15 +76,11 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 - `dailysteps_merged`
 - `sleepday_merged`
 - `weightLogInfo_merged`
-- `dailysteps_merged`
-- `dailysteps_merged`
-- `dailysteps_merged`
-
 
 **2.** I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are outlined below:
 
 - 2.a `dailyactivity_merged`:
-  - I cleaned and filtered out columns that were not relevant to the analysis, specifically `LoggedActivitiesDistance` and `SedentaryActiveDistance`. Additionally, I rounded all `FLOAT` data types to two decimal places to enhance readability and maintain uniformity.
+  - I excluded the columns `LoggedActivitiesDistance` and `SedentaryActiveDistance` due to their limited entries, which made them irrelevant for the analysis. Out of 940 entries, `LoggedActivitiesDistance` had only 32 values, and `SedentaryActiveDistance` had 84. Additionally, I rounded all `FLOAT` data typ
 
 ```sql
 SELECT 
