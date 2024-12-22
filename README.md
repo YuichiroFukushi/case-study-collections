@@ -108,7 +108,7 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailyactivity`
 | 4   | 1644430081  | 2016-04-28   | 9405       | 6.84          | 6.84            | 0.2                | 2.32                    | 4.31               | 3                 | 53                  | 1157             | 3108     |
 | 5   | 1644430081  | 2016-04-30   | 18213      | 13.24         | 13.24           | 0.63               | 3.14                    | 9.46               | 9                 | 71                  | 816              | 3846     |
 
-***
+##
 
 - 2.b `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged`:
   - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing. I used the `INNER JOIN` statement to check if the data matched based on user IDs and activity dates. Below is the query I executed:
