@@ -97,13 +97,13 @@ AND activity.ActivityDate = calories.ActivityDay -- Note: The ActivityDate colum
 ```
 
 ### Query Result:
-| SedentaryMinutes (activity) | LightlyActiveMinutes (activity) | FairlyActiveMinutes (activity) | VeryActiveMinutes (activity) | SedentaryMinutes (intensities) | LightlyActiveMinutes (intensities) | FairlyActiveMinutes (intensities) | VeryActiveMinutes (intensities) |
-|-----------------------------|---------------------------------|--------------------------------|------------------------------|-------------------------------|-----------------------------------|----------------------------------|--------------------------------|
-| 120                         | 180                             | 60                             | 45                           | 120                           | 180                               | 60                               | 45                             |
-| 130                         | 170                             | 70                             | 40                           | 130                           | 170                               | 70                               | 40                             |
-| 140                         | 160                             | 80                             | 50                           | 140                           | 160                               | 80                               | 50                             |
-| 110                         | 190                             | 65                             | 60                           | 110                           | 190                               | 65                               | 60                             |
-
+| Row | calories | calories_1 |
+|-----|----------|------------|
+| 1   | 2690     | 2690       |
+| 2   | 3226     | 3226       |
+| 3   | 3300     | 3300       |
+| 4   | 3108     | 3108       |
+| 5   | 3846     | 3846       |
 
 ```sql
 SELECT 
@@ -122,12 +122,13 @@ AND activity.ActivityDate = intensities.ActivityDay -- Note: The ActivityDate co
 ```
 
 ### Query Result:
-| SedentaryMinutes (activity) | LightlyActiveMinutes (activity) | FairlyActiveMinutes (activity) | VeryActiveMinutes (activity) | SedentaryMinutes (intensities) | LightlyActiveMinutes (intensities) | FairlyActiveMinutes (intensities) | VeryActiveMinutes (intensities) |
-|-----------------------------|---------------------------------|--------------------------------|------------------------------|-------------------------------|-----------------------------------|----------------------------------|--------------------------------|
-| 120                         | 180                             | 60                             | 45                           | 120                           | 180                               | 60                               | 45                             |
-| 130                         | 170                             | 70                             | 40                           | 130                           | 170                               | 70                               | 40                             |
-| 140                         | 160                             | 80                             | 50                           | 140                           | 160                               | 80                               | 50                             |
-| 110                         | 190                             | 65                             | 60                           | 110                           | 190                               | 65                               | 60                             |
+| Row | SedentaryMinutes | LightlyActiveMinutes | FairlyActiveMinutes | VeryActiveMinutes | SedentaryMinutes_1 | LightlyActiveMinutes_1 | FairlyActiveMinutes_1 | VeryActiveMinutes_1 |
+|-----|------------------|----------------------|---------------------|-------------------|--------------------|------------------------|-----------------------|----------------------|
+| 1   | 950              | 174                  | 0                   | 0                 | 950                | 174                    | 0                     | 0                    |
+| 2   | 774              | 206                  | 0                   | 0                 | 774                | 206                    | 0                     | 0                    |
+| 3   | 1141             | 236                  | 2                   | 61                | 1141               | 236                    | 2                     | 61                   |
+| 4   | 1131             | 217                  | 19                  | 73                | 1131               | 217                    | 19                    | 73                   |
+| 5   | 708              | 214                  | 27                  | 53                | 708                | 214                    | 27                    | 53                   |
 
 ```sql
 SELECT 
