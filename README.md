@@ -44,8 +44,20 @@ Sršen requests an analysis of smart device usage data to understand how consume
 
 ### About the Data
 
-Sršen suggested using public data on smart device users' daily habits for analysis and directed me to a specific dataset: **[Fitbit Fitness Tracker Data (CC0: Public Domain)](https://www.kaggle.com/datasets/arashnic/fitbit)**. This dataset, available on Kaggle, includes personal fitness tracker data from eligible Fitbit users who consented to share their data. It contains minute-level data on physical activity, heart rate, and sleep monitoring, offering insights into daily activity, steps, and heart rate to explore users' habits. 
+Sršen suggested using public data on smart device users' daily habits for analysis and directed me to a specific dataset: **[Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit)**. This dataset, available on Kaggle, includes personal fitness tracker data from eligible Fitbit users who consented to share their data. It contains minute-level data on physical activity, heart rate, and sleep monitoring, offering insights into daily activity, steps, and heart rate to explore users' habits. 
 
 I will be using this dataset to begin the data analysis process: first by cleaning the data using SQL, and then transferring the cleaned data to RStudio for deeper analysis and visualization.
+
+### Limitations
+
+- Sample size: 30 people is not a large enough sample to be
+  representative of all FitBit users
+- Outdated: The dataset contains data from a one month period in 2016
+  only. For a deeper and more accurate analysis of trends, we would need
+  data from the current year, preferably collected for an entire year to
+  look at if trends vary during different times of year.
+- Limited: The dataset does not contain any demographic information
+  about the users, including gender, age, or location, which would be
+  beneficial for marketing purposes to target specific customers
 
 
