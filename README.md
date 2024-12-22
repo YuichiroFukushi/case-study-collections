@@ -41,3 +41,11 @@ Sršen requests an analysis of smart device usage data to understand how consume
 1.  What are some trends in smart device usage?
 2.  How could these trends apply to Bellabeat customers?
 3.  How can these trends help influence Bellabeat marketing strategy?
+
+### About the Data
+
+Sršen suggested using public data on smart device users' daily habits for analysis and directed me to a specific dataset: **[Fitbit Fitness Tracker Data (CC0: Public Domain)](https://www.kaggle.com/datasets/arashnic/fitbit)**. This dataset, available on Kaggle, includes personal fitness tracker data from eligible Fitbit users who consented to share their data. It contains minute-level data on physical activity, heart rate, and sleep monitoring, offering insights into daily activity, steps, and heart rate to explore users' habits. 
+
+I will be using this dataset to begin the data analysis process: first by cleaning the data using SQL, and then transferring the cleaned data to RStudio for deeper analysis and visualization.
+
+
