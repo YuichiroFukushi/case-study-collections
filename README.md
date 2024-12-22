@@ -99,7 +99,7 @@ SELECT
 FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailyactivity`
 ```
 
-### Query Result:
+**Query Result:**
 | Row | id          | ActivityDate | TotalSteps | TotalDistance | TrackerDistance | VeryActiveDistance | ModeratelyActiveDistance | LightActiveDistance | VeryActiveMinutes | FairlyActiveMinutes | SedentaryMinutes | Calories |
 |-----|-------------|--------------|------------|---------------|-----------------|---------------------|--------------------------|--------------------|-------------------|---------------------|------------------|----------|
 | 1   | 1624580081  | 2016-05-01   | 36019      | 28.03         | 28.03           | 21.92              | 4.19                    | 1.91               | 186               | 63                  | 1020             | 2690     |
@@ -121,7 +121,7 @@ ON activity.id = calories.id
 AND activity.ActivityDate = calories.ActivityDay -- Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailycalories table
 ```
 
-### Query Result:
+**Query Result:**
 | Row | calories | calories_1 |
 |-----|----------|------------|
 | 1   | 2690     | 2690       |
@@ -148,7 +148,7 @@ ON activity.id = intensities.id
 AND activity.ActivityDate = intensities.ActivityDay -- Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailyintensities table
 ```
 
-### Query Result:
+**Query Result:**
 | Row | SedentaryMinutes | LightlyActiveMinutes | FairlyActiveMinutes | VeryActiveMinutes | SedentaryMinutes_1 | LightlyActiveMinutes_1 | FairlyActiveMinutes_1 | VeryActiveMinutes_1 |
 |-----|------------------|----------------------|---------------------|-------------------|--------------------|------------------------|-----------------------|----------------------|
 | 1   | 950              | 174                  | 0                   | 0                 | 950                | 174                    | 0                     | 0                    |
@@ -169,7 +169,7 @@ ON activity.id = steps.id
 AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailysteps table
 ```
 
-***Query Result:***
+**Query Result:**
 | Row | TotalSteps | StepTotal |
 |-----|------------|-----------|
 | 1   | 36019      | 36019     |
@@ -178,7 +178,7 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 | 4   | 9405       | 9405      |
 | 5   | 18213      | 18213     |
 
-**Note:** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
 
 
