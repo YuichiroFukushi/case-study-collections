@@ -93,7 +93,7 @@ SELECT
 FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.dailyactivity` activity
 INNER JOIN `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.dailycalories` calories
 ON activity.id = calories.id 
-AND activity.ActivityDate = calories.ActivityDay
+AND activity.ActivityDate = calories.ActivityDay -- Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailycalories table
 ```
 
   - FIltered out the *'LoggedActivitiesDistance'* column, as it contains data for only 13 out of 941 entries and is not relevant to the analysis.
