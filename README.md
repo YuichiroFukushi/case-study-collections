@@ -58,7 +58,7 @@ Does this data **ROCCC** (a framework evaluating Reliability, Originality, Compr
 - Currency – The data is outdated, having been collected seven years ago, making it unsuitable for analyzing current trends.
 - Citation – The source is not well-documented, as the dataset is attributed to an unspecified third-party provider (Amazon Mechanical Turk).
 
-Based on these factors, the dataset does not meet the ROCCC criteria.
+Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 ---
 
