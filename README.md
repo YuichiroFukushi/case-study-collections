@@ -137,7 +137,7 @@ SELECT
 FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailyactivity` activity
 INNER JOIN `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailysteps` steps
 ON activity.id = steps.id 
-AND activity.ActivityDate = steps.ActivityDay Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailysteps table
+AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column in the dailyactivity table is named ActivityDay in the dailysteps table
 ```
 
 ### Query Result:
@@ -148,4 +148,6 @@ AND activity.ActivityDate = steps.ActivityDay Note: The ActivityDate column in t
 | 3   | 11256      | 11256     |
 | 4   | 9405       | 9405      |
 | 5   | 18213      | 18213     |
+
+**Note:** The tables above display only the first 5 rows for visualization purposes. Each query was executed and confirmed to yield the same results across all 940 rows, with the selected columns remaining consistent throughout.
 
