@@ -235,9 +235,12 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
 1. Now that I've cleaned the data needed for analysis, I will load the datasets (in CSV format) into RStudio, along with the necessary packages, to begin the exploration process.
 
 ```r
+# Load necessary packages
 suppressPackageStartupMessages(library(tidyverse))
-suppressPackageStartupMessages(library(ggplot2)) 
-suppressPackageStartupMessages(library(lubridate)) 
-suppressPackageStartupMessages(library(lm.beta))
+
+# Load datasets
+daily_activity <- read_csv("dailyactivity.csv")
+sleep_day <- read_csv("sleepday.csv")
+weight_log_info <- read_csv("weightloginfo.csv")
 ```
 
