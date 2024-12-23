@@ -102,11 +102,13 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailyactivity`
 **Query Result:**
 | Row | id          | ActivityDate | TotalSteps | TotalDistance | TrackerDistance | VeryActiveDistance | ModeratelyActiveDistance | LightActiveDistance | VeryActiveMinutes | FairlyActiveMinutes | SedentaryMinutes | Calories |
 |-----|-------------|--------------|------------|---------------|-----------------|---------------------|--------------------------|--------------------|-------------------|---------------------|------------------|----------|
-| 1   | 1624580081  | 2016-05-01   | 36019      | 28.03         | 28.03           | 21.92              | 4.19                    | 1.91               | 186               | 63                  | 1020             | 2690     |
-| 2   | 1644430081  | 2016-04-14   | 11037      | 8.02          | 8.02            | 0.36               | 2.56                    | 5.1                | 5                 | 58                  | 1125             | 3226     |
-| 3   | 1644430081  | 2016-04-19   | 11256      | 8.18          | 8.18            | 0.36               | 2.53                    | 5.3                | 5                 | 58                  | 1099             | 3300     |
-| 4   | 1644430081  | 2016-04-28   | 9405       | 6.84          | 6.84            | 0.2                | 2.32                    | 4.31               | 3                 | 53                  | 1157             | 3108     |
-| 5   | 1644430081  | 2016-04-30   | 18213      | 13.24         | 13.24           | 0.63               | 3.14                    | 9.46               | 9                 | 71                  | 816              | 3846     |
+| 1   | 1624580081  | 2016-05-01   | 36019      | 28.03         | 28.03           | 21.92               | 4.19                     | 1.91               | 186               | 63                  | 1020             | 2690     |
+| 2   | 1644430081  | 2016-04-14   | 11037      | 8.02          | 8.02            | 0.36                | 2.56                     | 5.1                | 5                 | 58                  | 1125             | 3226     |
+| 3   | 1644430081  | 2016-04-19   | 11256      | 8.18          | 8.18            | 0.36                | 2.53                     | 5.3                | 5                 | 58                  | 1099             | 3300     |
+| 4   | 1644430081  | 2016-04-28   | 9405       | 6.84          | 6.84            | 0.2                 | 2.32                     | 4.31               | 3                 | 53                  | 1157             | 3108     |
+| 5   | 1644430081  | 2016-04-30   | 18213      | 13.24         | 13.24           | 0.63                | 3.14                     | 9.46               | 9                 | 71                  | 816              | 3846     |
+
+***Note:*** The table above display only the first 5 rows for visualization purposes.
 
 - 2.b `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged`:
   - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing. I used the `INNER JOIN` statement to check if the data matched based on user IDs and activity dates. Below is the query I executed:
@@ -149,7 +151,7 @@ AND activity.ActivityDate = intensities.ActivityDay -- Note: The ActivityDate co
 ```
 
 **Query Result:**
-| Row | SedentaryMinutes | LightlyActiveMinutes | FairlyActiveMinutes | VeryActiveMinutes | SedentaryMinutes_1 | LightlyActiveMinutes_1 | FairlyActiveMinutes_1 | VeryActiveMinutes_1 |
+| Row | SedentaryMinutes | LightlyActiveMinutes | FairlyActiveMinutes | VeryActiveMinutes | SedentaryMinutes_1 | LightlyActiveMinutes_1 | FairlyActiveMinutes_1 | VeryActiveMinutes_1  |
 |-----|------------------|----------------------|---------------------|-------------------|--------------------|------------------------|-----------------------|----------------------|
 | 1   | 950              | 174                  | 0                   | 0                 | 950                | 174                    | 0                     | 0                    |
 | 2   | 774              | 206                  | 0                   | 0                 | 774                | 206                    | 0                     | 0                    |
@@ -199,7 +201,7 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.sleepday`
 | 4   | 1503960366| 2016-04-19 | 1                 | 304                | 320            |
 | 5   | 1503960366| 2016-04-20 | 1                 | 360                | 377            |
 
-***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+***Note:*** The table above display only the first 5 rows for visualization purposes.
 
 - 2.d `weightLogInfo_merged`:
   - I excluded the column `Fat` from the analysis due to its limited entries, with only **2 out of 67** entries containing data, making it irrelevant for this study. Additionally, I rounded the `FLOAT` data types (`WeightKg`, `WeightPounds`, and `BMI`) to two decimal places to enhance readability and ensure consistency.
@@ -226,7 +228,7 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
 | 4   | 4558609924  | 2016-05-01 | 69.9     | 154.10       | 27.32 | true           | 1462147199000 |
 | 5   | 4558609924  | 2016-04-25 | 70.3     | 154.98       | 27.46 | true           | 1461628799000 |
 
-***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
+***Note:*** The table above display only the first 5 rows for visualization purposes.
 
 ### 🔍 Data Exploration
 
