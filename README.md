@@ -180,8 +180,52 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
+- 2.c `sleepday_merged`:
+  - I excluded the column TotalSleepRecords from the analysis as it was not relevant to the study I am conducting.
 
+```sql
+SELECT 
+  Id,
+  SleepDay,
+  TotalMinutesAsleep,
+  TotalTimeInBed
+FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.sleepday`
+```
+| Row | Id        | SleepDay   | TotalSleepRecords | TotalMinutesAsleep | TotalTimeInBed |
+|-----|-----------|------------|-------------------|--------------------|----------------|
+| 1   | 1503960366| 2016-04-12 | 1                 | 327                | 346            |
+| 2   | 1503960366| 2016-04-15 | 1                 | 412                | 442            |
+| 3   | 1503960366| 2016-04-17 | 1                 | 700                | 712            |
+| 4   | 1503960366| 2016-04-19 | 1                 | 304                | 320            |
+| 5   | 1503960366| 2016-04-20 | 1                 | 360                | 377            |
 
+***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
+- 2.d `weightLogInfo_merged`:
+  - I excluded the column `Fat` from the analysis due to its limited entries, with only **2 out of 67** entries containing data, making it irrelevant for this study. Additionally, I rounded the `FLOAT` data types (`WeightKg`, `WeightPounds`, and `BMI`) to two decimal places to enhance readability and ensure consistency.
+
+```sql
+SELECT 
+  Id,
+  Date,
+  ROUND(WeightKg, 2) AS WeightKg,
+  ROUND(WeightPounds, 2) AS WeightPounds,
+  ROUND(BMI, 2) AS BMI,
+  IsManualReport,
+  LogId
+FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
+```
+
+**Query Result:** 
+
+| Row | Id          | Date       | WeightKg | WeightPounds | BMI   | IsManualReport | LogId         |
+|-----|-------------|------------|----------|--------------|-------|----------------|---------------|
+| 1   | 4558609924  | 2016-05-02 | 69.2     | 152.56       | 27.04 | true           | 1462233599000 |
+| 2   | 4558609924  | 2016-04-18 | 69.7     | 153.66       | 27.25 | true           | 1461023999000 |
+| 3   | 4558609924  | 2016-05-09 | 69.1     | 152.34       | 27.00 | true           | 1462838399000 |
+| 4   | 4558609924  | 2016-05-01 | 69.9     | 154.10       | 27.32 | true           | 1462147199000 |
+| 5   | 4558609924  | 2016-04-25 | 70.3     | 154.98       | 27.46 | true           | 1461628799000 |
+
+***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
 
