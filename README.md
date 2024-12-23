@@ -184,7 +184,7 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
-- 2.d - `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`:
+- 2.c - `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`:
   - For the datasets `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`, I addressed the issue with the `Activityhour` column, which contained both date and time in an AM/PM format unsupported by BigQuery. I used Google Sheets' date-time feature to automatically convert the AM/PM format into a 24-hour format. Then, I applied the `SPLIT` function to separate the column into two: `activitydate`, containing the date, and `activityhour`, containing the time. Below is the before and after transformation:
 
 **Before:**
@@ -224,7 +224,7 @@ SELECT
 FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
 ```
 
-- 2.c `sleepday_merged`:
+- 2.d `sleepday_merged`:
   - I excluded the column TotalSleepRecords from the analysis as it was not relevant to the study I am conducting.
 
 ```sql
