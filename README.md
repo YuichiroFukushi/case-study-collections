@@ -74,8 +74,10 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 - `dailycalories_merged`
 - `dailyIntensities_merged`
 - `dailysteps_merged`
+- `hourlyintensities_merged`
+- `hourlycalories_merged`
+- `hourlysteps_merged`
 - `sleepday_merged`
-- `weightLogInfo_merged`
 
 **2.** I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are showned below:
 
@@ -182,6 +184,46 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
+- 2.d - `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`:
+  - For the datasets `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`, I addressed the issue with the `Activityhour` column, which contained both date and time in an AM/PM format unsupported by BigQuery. I used Google Sheets' date-time feature to automatically convert the AM/PM format into a 24-hour format. Then, I applied the `SPLIT` function to separate the column into two: `activitydate`, containing the date, and `activityhour`, containing the time. Below is the before and after transformation:
+
+**Before:**
+| 1   | Id         | ActivityHour           | Calories |
+|-----|------------|------------------------|----------|
+| 2   | 1503960366 | 4/12/2016 12:00:00 AM  | 81       |
+| 3   | 1503960366 | 4/12/2016 1:00:00 AM   | 61       |
+| 4   | 1503960366 | 4/12/2016 2:00:00 AM   | 59       |
+| 5   | 1503960366 | 4/12/2016 3:00:00 AM   | 47       |
+| 6   | 1503960366 | 4/12/2016 4:00:00 AM   | 48       |
+
+| 1   | Id         | Activityday           | TotalIntensity | AverageIntensity |
+|-----|------------|-----------------------|----------------|------------------|
+| 2   | 1503960366 | 4/12/2016 12:00:00 AM | 20             | 0.33             |
+| 3   | 1503960366 | 4/12/2016 1:00:00 AM  | 8              | 0.13             |
+| 4   | 1503960366 | 4/12/2016 2:00:00 AM  | 7              | 0.12             |
+| 5   | 1503960366 | 4/12/2016 3:00:00 AM  | 0              | 0                |
+| 6   | 1503960366 | 4/12/2016 4:00:00 AM  | 0              | 0                |
+
+| 1   | Id         | ActivityHour           | StepTotal |
+|-----|------------|------------------------|-----------|
+| 2   | 1503960366 | 4/12/2016 12:00:00 AM  | 373       |
+| 3   | 1503960366 | 4/12/2016 1:00:00 AM   | 160       |
+| 4   | 1503960366 | 4/12/2016 2:00:00 AM   | 151       |
+| 5   | 1503960366 | 4/12/2016 3:00:00 AM   | 0         |
+| 6   | 1503960366 | 4/12/2016 4:00:00 AM   | 0         |
+   
+```sql
+SELECT 
+  Id,
+  Date,
+  ROUND(WeightKg, 2) AS WeightKg,
+  ROUND(WeightPounds, 2) AS WeightPounds,
+  ROUND(BMI, 2) AS BMI,
+  IsManualReport,
+  LogId
+FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
+```
+
 - 2.c `sleepday_merged`:
   - I excluded the column TotalSleepRecords from the analysis as it was not relevant to the study I am conducting.
 
@@ -203,33 +245,6 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.sleepday`
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes.
 
-- 2.d `weightLogInfo_merged`:
-  - I excluded the column `Fat` from the analysis due to its limited entries, with only **2 out of 67** entries containing data, making it irrelevant for this study. Additionally, I rounded the `FLOAT` data types (`WeightKg`, `WeightPounds`, and `BMI`) to two decimal places to enhance readability and ensure consistency.
-
-```sql
-SELECT 
-  Id,
-  Date,
-  ROUND(WeightKg, 2) AS WeightKg,
-  ROUND(WeightPounds, 2) AS WeightPounds,
-  ROUND(BMI, 2) AS BMI,
-  IsManualReport,
-  LogId
-FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
-```
-
-**Query Result:** 
-
-| Row | Id          | Date       | WeightKg | WeightPounds | BMI   | IsManualReport | LogId         |
-|-----|-------------|------------|----------|--------------|-------|----------------|---------------|
-| 1   | 4558609924  | 2016-05-02 | 69.2     | 152.56       | 27.04 | true           | 1462233599000 |
-| 2   | 4558609924  | 2016-04-18 | 69.7     | 153.66       | 27.25 | true           | 1461023999000 |
-| 3   | 4558609924  | 2016-05-09 | 69.1     | 152.34       | 27.00 | true           | 1462838399000 |
-| 4   | 4558609924  | 2016-05-01 | 69.9     | 154.10       | 27.32 | true           | 1462147199000 |
-| 5   | 4558609924  | 2016-04-25 | 70.3     | 154.98       | 27.46 | true           | 1461628799000 |
-
-***Note:*** The table above display only the first 5 rows for visualization purposes.
-
 ### 🔍 Data Exploration
 
 1. Now that I've cleaned the data needed for analysis, I will load the datasets (in CSV format) into RStudio, along with the necessary packages, to begin the exploration process.
@@ -243,4 +258,4 @@ daily_activity <- read_csv("dailyactivity.csv")
 sleep_day <- read_csv("sleepday.csv")
 weight_log_info <- read_csv("weightloginfo.csv")
 ```
-
+2. Let's start with the `dailyactivity` dataset. I want to know how many users are 
