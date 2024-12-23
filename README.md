@@ -228,4 +228,6 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
+### 🔍 Data Exploration
+
 
