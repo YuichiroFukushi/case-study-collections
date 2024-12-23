@@ -68,7 +68,7 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 ### 📋 Data Preparation
 
-**1.** The datasets were downloaded in a zip file, from which 18 CSV files were extracted, each representing a separate dataset. For this analysis, the following six datasets will be used:
+**1.** The datasets were downloaded in a zip file, from which 18 CSV files were extracted, each representing a separate dataset. For this analysis, the following eight datasets will be used:
 
 - `dailyactivity_merged`
 - `dailycalories_merged`
@@ -185,7 +185,9 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 ***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
 - 2.c - `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`:
-  - For the datasets `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`, I addressed the issue with the `Activityhour` column, which contained both date and time in an AM/PM format unsupported by BigQuery. I used Google Sheets' date-time feature to automatically convert the AM/PM format into a 24-hour format. Then, I applied the `SPLIT` function to separate the column into two: `activitydate`, containing the date, and `activityhour`, containing the time. Below is the before and after transformation:
+  - For the datasets `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`, I addressed an issue with the `Activityhour` column, which contained both date and time in an AM/PM format unsupported by BigQuery. To resolve this, I used the `INT` function in Google Sheets to convert the date into an integer. This is necessary because Google Sheets stores dates as serial numbers, where the integer represents the number of days since a specific starting date. After converting the date into an integer, I used Google Sheets' `DATE` function to convert the integer back into a proper date format.
+
+For the time, I subtracted the `Activityhour` values from the newly separated `Activitydate` column and applied the `DATE` function to transform the result into a time format. I named this new column `Activityhour` and deleted the original `Activityhour` column to ensure the data was clean and avoid confusion. Before deleting the original columns, I used "Paste Special" to paste the newly separated date and time as values only, preventing any `#REF!` errors after the original columns were deleted. Below is the before and after transformation.
 
 **Before:**
 | 1   | Id         | ActivityHour           | Calories |
@@ -211,18 +213,33 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 | 4   | 1503960366 | 4/12/2016 2:00:00 AM   | 151       |
 | 5   | 1503960366 | 4/12/2016 3:00:00 AM   | 0         |
 | 6   | 1503960366 | 4/12/2016 4:00:00 AM   | 0         |
-   
-```sql
-SELECT 
-  Id,
-  Date,
-  ROUND(WeightKg, 2) AS WeightKg,
-  ROUND(WeightPounds, 2) AS WeightPounds,
-  ROUND(BMI, 2) AS BMI,
-  IsManualReport,
-  LogId
-FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.weightloginfo`
-```
+
+**After:**
+| 1   | Id         | ActivityDate | ActivityHour | Calories |
+|-----|------------|--------------|--------------|----------|
+| 2   | 1503960366 | 4/12/2016    | 0:00:00      | 81       |
+| 3   | 1503960366 | 4/12/2016    | 1:00:00      | 61       |
+| 4   | 1503960366 | 4/12/2016    | 2:00:00      | 59       |
+| 5   | 1503960366 | 4/12/2016    | 3:00:00      | 47       |
+| 6   | 1503960366 | 4/12/2016    | 4:00:00      | 48       |
+
+| 1   | Id         | ActivityDate | ActivityHour | TotalIntensity | AverageIntensity |
+|-----|------------|--------------|--------------|----------------|------------------|
+| 2   | 1503960366 | 4/12/2016    | 0:00:00      | 20             | 0.33             |
+| 3   | 1503960366 | 4/12/2016    | 1:00:00      | 8              | 0.13             |
+| 4   | 1503960366 | 4/12/2016    | 2:00:00      | 7              | 0.12             |
+| 5   | 1503960366 | 4/12/2016    | 3:00:00      | 0              | 0.00             |
+| 6   | 1503960366 | 4/12/2016    | 4:00:00      | 0              | 0.00             |
+
+| 1   | Id         | ActivityDate | ActivityHour | StepTotal |
+|-----|------------|--------------|--------------|-----------|
+| 2   | 1503960366 | 4/12/2016    | 0:00:00      | 373       |
+| 3   | 1503960366 | 4/12/2016    | 1:00:00      | 160       |
+| 4   | 1503960366 | 4/12/2016    | 2:00:00      | 151       |
+| 5   | 1503960366 | 4/12/2016    | 3:00:00      | 0         |
+| 6   | 1503960366 | 4/12/2016    | 4:00:00      | 0         |
+
+***Note:*** The table above display only the first 5 rows for visualization purposes.
 
 - 2.d `sleepday_merged`:
   - I excluded the column TotalSleepRecords from the analysis as it was not relevant to the study I am conducting.
@@ -255,7 +272,10 @@ suppressPackageStartupMessages(library(tidyverse))
 
 # Load datasets
 daily_activity <- read_csv("dailyactivity.csv")
+hourly_intensities <- read_csv("hourlyintensities.csv")
+hourly_calories <- read_csv("hourlycalories.csv")
+hourly_steps <- read_csv("hourlysteps.csv")
 sleep_day <- read_csv("sleepday.csv")
-weight_log_info <- read_csv("weightloginfo.csv")
 ```
+
 2. Let's start with the `dailyactivity` dataset. I want to know how many users are 
