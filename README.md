@@ -388,4 +388,6 @@ hourly_merged %>%
 | **StepTotal**         | 0.0    | 0.0     | 40.0   | 320.2 | 357.0   | 10554.0|
 ```
 
+***Note:*** I excluded the `Id`, `ActivityDate`, and `ActivityHour` columns from the summary since they are not necessary.
+
 
