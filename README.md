@@ -289,8 +289,9 @@ sapply(datasets, function(df) n_distinct(df$Id))
 ```
 
 **Output:**
+```r
 daily_activity      hourly_intensities    hourly_calories       hourly_steps       sleep_day 
             33                     33                 33                 33              24
-
+```
 
 
