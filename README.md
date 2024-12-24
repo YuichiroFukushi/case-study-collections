@@ -293,4 +293,15 @@ sapply(datasets, function(df) n_distinct(df$Id))
 [1] 33 33 33 33 24
 ```
 
+3. After confirming that certain datasets have the same number of unique IDs, I want to check if they also contain the same number of entries to ensure compatibility for merging, helping to organize and streamline the datasets.
 
+```r
+# Get the number of rows for each dataset
+sapply(datasets, nrow)
+```
+
+**Output:**
+```r
+[1] 940 22099 22099 22099 413
+```
+I will merge `hourly_intensities`, `hourly_calories`, and `hourly_steps` into a new dataset named `hourly_merged` because they are the only datasets with matching unique ID counts and the same number of entries, making them suitable for merging.
