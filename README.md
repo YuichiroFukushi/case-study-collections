@@ -346,6 +346,12 @@ hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate",
 
 - 5.a Let's perform a quick overview of the three datasets—`daily_activity`, `hourly_merged`, and `sleep_day`—using the `summary()` function in R.
 
+```r
+daily_activity %>%
+    select(TotalSteps, TotalDistance, TrackerDistance, VeryActiveDistance, ModeratelyActiveDistance, LightActiveDistance, VeryActiveMinutes, FairlyActiveMinutes, SedentaryMinutes, Calories) %>%
+    summary()
+```
+
 **Output:**
 ```r
 # "daily_activity" Dataset Summary
@@ -364,5 +370,22 @@ hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate",
 ```
 
 ***Note:*** I excluded the `Id` and `ActivityDate` columns from the summary since they are not necessary.
+
+```r
+hourly_merged %>%
+    select(ActivityHour, TotalIntensity, AverageIntensity, Calories, StepTotal) %>%
+    summary()
+```
+
+**Output:**
+```r
+# "hourly_merged" Dataset Summary
+| Variable              | Min.   | 1st Qu. | Median | Mean  | 3rd Qu. | Max.   |
+|-----------------------|--------|---------|--------|-------|---------|--------|
+| **TotalIntensity**    | 0.00   | 0.00    | 3.00   | 12.04 | 16.00   | 180.00 |
+| **AverageIntensity**  | 0.0000 | 0.0000  | 0.0500 | 0.2007| 0.2700  | 3.0000 |
+| **Calories**          | 42.00  | 63.00   | 83.00  | 97.39 | 108.00  | 948.00 |
+| **StepTotal**         | 0.0    | 0.0     | 40.0   | 320.2 | 357.0   | 10554.0|
+```
 
 
