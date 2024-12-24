@@ -316,10 +316,11 @@ hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate",
 # The resulting dataset is named hourly_merged
 ```
 
-***Note:*** The `merge()` function in R can only combine two datasets at a time, which is why the merging process requires two steps when working with three datasets.
+***Note:*** The `merge()` function in R can only combine two datasets at a time, which is why the merging process requires two steps when working with three datasets. (While advanced coding can achieve the output in a single step, I'm choosing to stick with the basic approach.)
 
 **Output:**
 ```r
+# Merged dataset from `hourly_intensities`, `hourly_calories`, and `hourly_steps`
 | Row | Id         | ActivityDate | ActivityHour | TotalIntensity | AverageIntensity | Calories | StepTotal |
 |-----|------------|--------------|--------------|----------------|------------------|----------|-----------|
 | 1   | 1503960366 | 4/12/2016    | 00:00:00     | 20             | 0.33             | 81       | 373       |
