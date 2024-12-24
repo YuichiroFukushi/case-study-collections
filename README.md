@@ -281,12 +281,16 @@ sleep_day <- read_csv("sleepday.csv")
 2. Let's start with the `dailyactivity dataset`. I want to determine the number of unique users, as many IDs appear multiple times.
 
 ```r
-# Calculate and display the number of unique IDs
-n_distinct(daily_activity$id)
+# Creating a list of datasets
+datasets <- list(daily_activity, hourly_intensities, hourly_calories, hourly_steps, sleep_day)
 
-# Output
-[1] 33
+# Directly printing the distinct counts for each dataset
+sapply(datasets, function(df) n_distinct(df$Id))
 ```
+
+**Output:**
+daily_activity      hourly_intensities    hourly_calories       hourly_steps       sleep_day 
+            33                     33                 33                 33              24
 
 
 
