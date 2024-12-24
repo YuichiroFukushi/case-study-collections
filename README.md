@@ -237,10 +237,10 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 | 5   | 1503960366 | 4/12/2016    | 3:00:00      | 0         |
 | 6   | 1503960366 | 4/12/2016    | 4:00:00      | 0         |
 
-***Note:*** The table above display only the first 5 rows for visualization purposes.
+***Note:*** The tables above display only the first 5 rows for visualization purposes.
 
 - 2.d `sleepday_merged`:
-  - I excluded the column TotalSleepRecords from the analysis as it was not relevant to the study I am conducting.
+  - I excluded the `TotalSleepRecords` column from the table as it is not sufficiently relevant to impact my analysis.
 
 ```sql
 SELECT 
@@ -250,6 +250,8 @@ SELECT
   TotalTimeInBed
 FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.sleepday`
 ```
+
+**Query Result:**
 | Row | Id        | SleepDay   | TotalSleepRecords | TotalMinutesAsleep | TotalTimeInBed |
 |-----|-----------|------------|-------------------|--------------------|----------------|
 | 1   | 1503960366| 2016-04-12 | 1                 | 327                | 346            |
@@ -276,4 +278,16 @@ hourly_steps <- read_csv("hourlysteps.csv")
 sleep_day <- read_csv("sleepday.csv")
 ```
 
-2. Let's start with the `dailyactivity` dataset. I want to know how many users are 
+2. Let's start with the `dailyactivity dataset`. I want to determine the number of unique users, as many IDs appear multiple times.
+
+```r
+# Calculate and display the number of unique IDs
+n_distinct(daily_activity$id)
+
+#### Example of Output in R Markdown
+```plaintext
+[1] 4
+```
+**Output:**
+
+
