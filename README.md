@@ -278,7 +278,7 @@ hourly_steps <- read_csv("hourlysteps.csv")
 sleep_day <- read_csv("sleepday.csv")
 ```
 
-2. Let's start with the `dailyactivity dataset`. I want to determine the number of unique users, as many IDs appear multiple times.
+2. I want to determine the number of unique users, as many IDs appear multiple times.
 
 ```r
 # Creating a list of datasets
@@ -290,8 +290,7 @@ sapply(datasets, function(df) n_distinct(df$Id))
 
 **Output:**
 ```r
-daily_activity      hourly_intensities    hourly_calories       hourly_steps       sleep_day 
-            33                     33                 33                 33              24
+[1] 33 33 33 33 24
 ```
 
 
