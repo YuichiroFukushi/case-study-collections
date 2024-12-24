@@ -284,7 +284,7 @@ sleep_day <- read_csv("sleepday.csv")
 # Calculate and display the number of unique IDs
 n_distinct(daily_activity$id)
 
-# Output:
+# Output
 [1] 33
 ```
 
