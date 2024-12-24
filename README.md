@@ -304,4 +304,27 @@ sapply(datasets, nrow)
 ```r
 [1] 940 22099 22099 22099 413
 ```
-I will merge `hourly_intensities`, `hourly_calories`, and `hourly_steps` into a new dataset named `hourly_merged` because they are the only datasets with matching unique ID counts and the same number of entries, making them suitable for merging.
+4. I will merge `hourly_intensities`, `hourly_calories`, and `hourly_steps` into a new dataset named `hourly_merged` because they are the only datasets with matching unique ID counts and the same number of entries, making them suitable for merging.
+
+```r
+# Merging hourly_intensities and hourly_calories
+hourly_merged <- merge(hourly_intensities, hourly_calories, by = c("Id", "ActivityDate", "ActivityHour"))
+
+# Merging the result with hourly_steps
+hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate", "ActivityHour"))
+
+# The resulting dataset is named hourly_merged
+```
+
+***Note:*** The `merge()` function in R can only combine two datasets at a time, which is why the merging process requires two steps when working with three datasets.
+
+**Output:**
+```r
+| Id         | ActivityDate | ActivityHour | TotalIntensity | AverageIntensity | Calories | StepTotal |
+|------------|--------------|--------------|----------------|------------------|----------|-----------|
+| 1503960366 | 4/12/2016    | 00:00:00     | 20             | 0.33             | 81       | 373       |
+| 1503960366 | 4/12/2016    | 01:00:00     | 8              | 0.13             | 61       | 160       |
+| 1503960366 | 4/12/2016    | 02:00:00     | 7              | 0.12             | 59       | 151       |
+| 1503960366 | 4/12/2016    | 03:00:00     | 0              | 0.00             | 47       | 0         |
+| 1503960366 | 4/12/2016    | 04:00:00     | 0              | 0.00             | 48       | 0         |
+```
