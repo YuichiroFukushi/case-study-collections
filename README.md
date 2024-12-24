@@ -264,7 +264,7 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker.sleepday`
 
 ### 🔍 Data Exploration
 
-1. Now that I've cleaned the data needed for analysis, I will load the datasets (in CSV format) into RStudio, along with the necessary packages, to begin the exploration process.
+**1.** Now that I've cleaned the data needed for analysis, I will load the datasets (in CSV format) into RStudio, along with the necessary packages, to begin the exploration process.
 
 ```r
 # Load necessary packages
@@ -278,7 +278,7 @@ hourly_steps <- read_csv("hourlysteps.csv")
 sleep_day <- read_csv("sleepday.csv")
 ```
 
-2. I want to determine the number of unique users, as many IDs appear multiple times.
+**2.** I want to determine the number of unique users, as many IDs appear multiple times.
 
 ```r
 # Creating a list of datasets
@@ -293,7 +293,7 @@ sapply(datasets, function(df) n_distinct(df$Id))
 [1] 33 33 33 33 24
 ```
 
-3. After confirming that certain datasets have the same number of unique IDs, I want to check if they also contain the same number of entries to ensure compatibility for merging, helping to organize and streamline the datasets.
+**3.** After confirming that certain datasets have the same number of unique IDs, I want to check if they also contain the same number of entries to ensure compatibility for merging, helping to organize and streamline the datasets.
 
 ```r
 # Get the number of rows for each dataset
@@ -304,7 +304,7 @@ sapply(datasets, nrow)
 ```r
 [1] 940 22099 22099 22099 413
 ```
-4. I will merge `hourly_intensities`, `hourly_calories`, and `hourly_steps` into a new dataset named `hourly_merged` because they are the only datasets with matching unique ID counts and the same number of entries, making them suitable for merging.
+**4.** I will merge `hourly_intensities`, `hourly_calories`, and `hourly_steps` into a new dataset named `hourly_merged` because they are the only datasets with matching unique ID counts and the same number of entries, making them suitable for merging.
 
 ```r
 # Merging hourly_intensities and hourly_calories
@@ -319,6 +319,7 @@ hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate",
 ***Note:*** The `merge()` function in R can only combine two datasets at a time, which is why the merging process requires two steps when working with three datasets.
 
 **Output:**
+```r
 | Row | Id         | ActivityDate | ActivityHour | TotalIntensity | AverageIntensity | Calories | StepTotal |
 |-----|------------|--------------|--------------|----------------|------------------|----------|-----------|
 | 1   | 1503960366 | 4/12/2016    | 00:00:00     | 20             | 0.33             | 81       | 373       |
@@ -326,10 +327,11 @@ hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate",
 | 3   | 1503960366 | 4/12/2016    | 02:00:00     | 7              | 0.12             | 59       | 151       |
 | 4   | 1503960366 | 4/12/2016    | 03:00:00     | 0              | 0.00             | 47       | 0         |
 | 5   | 1503960366 | 4/12/2016    | 04:00:00     | 0              | 0.00             | 48       | 0         |
+```
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes.
 
-5. Let's return to the `dailyactivity` dataset and examine any patterns and trends within it:
+**5.** Let's return to the `dailyactivity` dataset and examine any patterns and trends within it:
 
 | Id         | ActivityDate | TotalSteps | TotalDistance | TrackerDistance | VeryActiveDistance  | ModeratelyActiveDistance | LightActiveDistance | VeryActiveMinutes | FairlyActiveMinutes | SedentaryMinutes | Calories |
 |------------|--------------|------------|---------------|-----------------|---------------------|--------------------------|---------------------|-------------------|---------------------|------------------|----------|
@@ -340,3 +342,25 @@ hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate",
 | 1503960366 | 2016-04-16   | 12669      | 8.16          | 8.16            | 2.71                | 0.41                     | 5.04                | 36                | 10                  | 773              | 1863     |
 
 ***Note:*** The table above shows only the first 5 rows for a single ID number from the `dailyactivity` dataset.
+
+- 5.a Let's perform a quick overview of the three datasets—`daily_activity`, `hourly_merged`, and `sleep_day`—using the `summary()` function in R.
+
+**Output:**
+```r
+| Variable                    | Min.   | 1st Qu. | Median | Mean  | 3rd Qu. | Max.   |
+|-----------------------------|--------|---------|--------|-------|---------|--------|
+| **TotalSteps**              | 0      | 3790    | 7406   | 7638  | 10727   | 36019  |
+| **TotalDistance**           | 0.000  | 2.620   | 5.245  | 5.490 | 7.713   | 28.030 |
+| **TrackerDistance**         | 0.000  | 2.620   | 5.245  | 5.475 | 7.710   | 28.030 |
+| **VeryActiveDistance**      | 0.000  | 0.000   | 0.210  | 1.503 | 2.053   | 21.920 |
+| **ModeratelyActiveDistance**| 0.000  | 0.000   | 0.240  | 0.568 | 0.800   | 6.480  |
+| **LightActiveDistance**     | 0.000  | 1.945   | 3.365  | 3.341 | 4.782   | 10.710 |
+| **VeryActiveMinutes**       | 0.00   | 0.00    | 4.00   | 21.16 | 32.00   | 210.00 |
+| **FairlyActiveMinutes**     | 0.00   | 0.00    | 6.00   | 13.56 | 19.00   | 143.00 |
+| **SedentaryMinutes**        | 0.0    | 729.8   | 1057.5 | 991.2 | 1229.5  | 1440.0 |
+| **Calories**                | 0      | 1828    | 2134   | 2304  | 2793    | 4900   |
+```
+
+***Note:*** I excluded the `Id` and `ActivityDate` columns from the summary since they are not necessary.
+
+
