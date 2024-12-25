@@ -452,7 +452,33 @@ ggplot(data = daily_activity, aes(x = TotalDistance, y = Calories)) +
 
 The scatterplot above shows a positive correlation between the number of steps taken, the total distance covered, and calories burned, indicating that **as both the number of steps and distance increase, the calories burned also increase.**
 
-2. We aim to estimate the time it takes for a user to fall asleep while in bed. Due to data limitations, we can only assume that TimeAwakeBeforeSleep—the difference between TotalTimeInBed and TotalMinutesAsleep—represents the time spent in bed before falling asleep, without accounting for wake periods or other factors.
+2. I want to visualize the distance covered by users based on the `VeryActiveDistance`, `ModeratelyActiveDistance`, and `LightActiveDistance` columns.
+
+```r
+# Transform the data into a long format and remove rows with missing or zero values.
+daily_activity_filtered <- daily_activity %>%
+  pivot_longer(cols = c(VeryActiveDistance, ModeratelyActiveDistance, LightActiveDistance),
+               names_to = "ActivityLevel",
+               values_to = "Distance") %>%
+  filter_all(all_vars(!is.na(.) & . != 0))
+
+# Visualize the Distribution of Active Distance
+ggplot(daily_activity_filtered, aes(x = Distance, fill = ActiveDistance)) +
+  geom_histogram(bins = 30, position = "dodge", alpha = 0.7) +
+  facet_wrap(~ ActiveDistance, scales = "free_x") +
+  theme_minimal() +
+  labs(title = "Distribution of Active Distance (Excluding Zeros)",
+       x = "Distance",
+       y = "Frequency") +
+  scale_fill_brewer(palette = "Set1")
+```
+
+**Output:**
+
+<img width="654" alt="Distribution of Active Distance" src="https://github.com/user-attachments/assets/26d8a1a6-e4dc-48e6-8288-d0bac2cd2ad2" />
+
+
+3. We aim to estimate the time it takes for a user to fall asleep while in bed. Due to data limitations, we can only assume that `TimeAwakeBeforeSleep` — the difference between `TotalTimeInBed` and `TotalMinutesAsleep` — represents the time spent in bed before falling asleep, without accounting for wake periods or other factors.
 
 ```r
 # Calculate time spent awake in bed before falling asleep
