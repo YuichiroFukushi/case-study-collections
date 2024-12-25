@@ -452,7 +452,30 @@ ggplot(data = daily_activity, aes(x = TotalDistance, y = Calories)) +
 
 The scatterplot above shows a positive correlation between the number of steps taken, the total distance covered, and calories burned, indicating that **as both the number of steps and distance increase, the calories burned also increase.**
 
-2. 
+2. We aim to estimate the time it takes for a user to fall asleep while in bed. Due to data limitations, we can only assume that TimeAwakeBeforeSleep—the difference between TotalTimeInBed and TotalMinutesAsleep—represents the time spent in bed before falling asleep, without accounting for wake periods or other factors.
 
+```r
+# Calculate time spent awake in bed before falling asleep
+sleep_day$TimeAwakeBeforeSleep <- sleep_day$TotalTimeInBed - sleep_day$TotalMinutesAsleep
 
+# Visualize the time awake before sleep
+ggplot(sleep_day, aes(x = TimeAwakeBeforeSleep)) +
+  geom_histogram(binwidth = 10, fill = "skyblue", color = "darkblue", alpha = 0.7) +
+  labs(
+    title = "Time Spent Awake in Bed Before Falling Asleep",
+    x = "Time Awake Before Sleep (minutes)",
+    y = "Frequency"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10)
+  )
+```
 
+**Output:**
+
+<img width="558" alt="TIme Spent Awake in Bed Before Falling Asleep" src="https://github.com/user-attachments/assets/323d5a7a-ff76-4f59-b445-a99c338b6978" />
+
+The histogram above indicates that most users spend at least 50 minutes in bed before falling asleep.
