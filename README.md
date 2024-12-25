@@ -533,7 +533,8 @@ These trends suggests that Bellabeat can tailor their marketing strategy to show
 
 ---
 
-<h2 style="text-align: center;">FIN 🙇🏻‍♂️</h2>
+## **FIN 🙇🏻‍♂️**
+
 
 
 
