@@ -476,6 +476,6 @@ ggplot(sleep_day, aes(x = TimeAwakeBeforeSleep)) +
 
 **Output:**
 
-<img width="558" alt="TIme Spent Awake in Bed Before Falling Asleep" src="https://github.com/user-attachments/assets/323d5a7a-ff76-4f59-b445-a99c338b6978" />
+<img width="1000" alt="TIme Spent Awake in Bed Before Falling Asleep" src="https://github.com/user-attachments/assets/323d5a7a-ff76-4f59-b445-a99c338b6978" />
 
 The histogram above indicates that most users spend at least 50 minutes in bed before falling asleep.
