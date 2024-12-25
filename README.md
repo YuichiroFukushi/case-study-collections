@@ -428,6 +428,7 @@ ggplot(data = daily_activity, aes(x = TotalSteps, y = Calories)) +
   )
 ```
 
+**Output:**
 ![Total Steps vs Calories](https://github.com/user-attachments/assets/68461da7-3706-4d83-aab4-f1be9c6ce22f)
 
 The scatterplot above shows a positive correlation between total steps and calories burned, indicating that as the number of steps increases, the calories burned also increase.
