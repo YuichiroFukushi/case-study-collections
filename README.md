@@ -416,6 +416,7 @@ summary(sleep_day[c("TotalSleepRecords", "TotalMinutesAsleep", "TotalTimeInBed")
 1. I want to determine if the number of steps taken by the user affects the calories burned, as this data will be important for our recommendations later.
 
 ```r
+# Total Steps vs. Calories
 ggplot(data = daily_activity, aes(x = TotalSteps, y = Calories)) +
   geom_point(color = "skyblue", size = 2, alpha = 0.7) + 
   geom_smooth(method = "lm", color = "darkblue", se = FALSE) +
@@ -426,18 +427,32 @@ ggplot(data = daily_activity, aes(x = TotalSteps, y = Calories)) +
     axis.title = element_text(size = 12, face = "bold"),
     axis.text = element_text(size = 10)
   )
+
+# Total Distance vs. Calories
+ggplot(data = daily_activity, aes(x = TotalDistance, y = Calories)) +
+  geom_point(color = "lightgreen", size = 3, alpha = 0.8) + 
+  geom_smooth(method = "lm", color = "darkgreen", se = TRUE) +
+  labs(title = "Total Distance vs. Calories", x = "Total Distance ", y = "Calories") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 18, face = "italic"),
+    axis.title = element_text(size = 14, face = "bold"),
+    axis.text = element_text(size = 12, color = "black"),
+    panel.grid.major = element_line(color = "gray", linetype = "dashed"),
+    panel.grid.minor = element_blank()
+  )
 ```
 
 **Output:**
-
-![Total Steps vs Calories](https://github.com/user-attachments/assets/68461da7-3706-4d83-aab4-f1be9c6ce22f)
-
-The scatterplot above shows a positive correlation between total steps and calories burned, indicating that as the number of steps increases, the calories burned also increase.
-
-2. 
 
 <div style="display: flex; justify-content: space-around;">
   <img src="https://github.com/user-attachments/assets/68461da7-3706-4d83-aab4-f1be9c6ce22f" width="500" />
   <img src="https://github.com/user-attachments/assets/3a6c57c4-bf2a-46cc-af25-300c359928ff" width="500" />
 </div>
+
+The scatterplot above shows a positive correlation between total steps and calories burned, indicating that as the number of steps increases, the calories burned also increase.
+
+2. 
+
+
 
