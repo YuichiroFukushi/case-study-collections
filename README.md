@@ -413,7 +413,7 @@ summary(sleep_day[c("TotalSleepRecords", "TotalMinutesAsleep", "TotalTimeInBed")
 
 ### 📈 Data Visualization
 
-1. I want to determine if the number of steps taken and the total distance covered by the user affect the calories burned, as this data will be important for our recommendations later.
+**1.** I want to determine if the number of steps taken and the total distance covered by the user affect the calories burned, as this data will be important for our recommendations later.
 
 ```r
 # Total Steps vs. Calories
@@ -452,7 +452,7 @@ ggplot(data = daily_activity, aes(x = TotalDistance, y = Calories)) +
 
 The scatterplot above shows a positive correlation between the number of steps taken, the total distance covered, and calories burned, indicating that **as both the number of steps and distance increase, the calories burned also increase.**
 
-2. I want to visualize the distance covered by users based on the `VeryActiveDistance`, `ModeratelyActiveDistance`, and `LightActiveDistance` columns.
+**2.** I want to visualize the distance covered by users based on the `VeryActiveDistance`, `ModeratelyActiveDistance`, and `LightActiveDistance` columns.
 
 ```r
 # Transform the data into a long format and remove rows with missing or zero values.
@@ -462,7 +462,7 @@ daily_activity_filtered <- daily_activity %>%
                values_to = "Distance") %>%
   filter_all(all_vars(!is.na(.) & . != 0))
 
-# Visualize the Distribution of Active Distance
+# Visualize Distribution of Active Distance
 ggplot(daily_activity_filtered, aes(x = Distance, fill = ActiveDistance)) +
   geom_histogram(bins = 30, position = "dodge", alpha = 0.7) +
   facet_wrap(~ ActiveDistance, scales = "free_x") +
@@ -479,13 +479,13 @@ ggplot(daily_activity_filtered, aes(x = Distance, fill = ActiveDistance)) +
 
 The histogram above shows that **a greater number of users cover more distance under `LightActiveDistance`.**
 
-3. We aim to estimate the time it takes for a user to fall asleep while in bed. Due to data limitations, we can only assume that `TimeAwakeBeforeSleep` — the difference between `TotalTimeInBed` and `TotalMinutesAsleep` — represents the time spent in bed before falling asleep, without accounting for wake periods or other factors.
+**3.** We aim to estimate the time it takes for a user to fall asleep while in bed. Due to data limitations, we can only assume that `TimeAwakeBeforeSleep` — the difference between `TotalTimeInBed` and `TotalMinutesAsleep` — represents the time spent in bed before falling asleep, without accounting for wake periods or other factors.
 
 ```r
 # Calculate time spent awake in bed before falling asleep
 sleep_day$TimeAwakeBeforeSleep <- sleep_day$TotalTimeInBed - sleep_day$TotalMinutesAsleep
 
-# Visualize the time awake before sleep
+# Visualize Time Spent Awake in Bed Before Falling Asleep
 ggplot(sleep_day, aes(x = TimeAwakeBeforeSleep)) +
   geom_histogram(binwidth = 10, fill = "skyblue", color = "darkblue", alpha = 0.7) +
   labs(
@@ -507,4 +507,7 @@ ggplot(sleep_day, aes(x = TimeAwakeBeforeSleep)) +
 
 The histogram above indicates that **most users spend at least 50 minutes in bed before falling asleep.**
 
+## **💡 Final Insights
+
+### 🎯 Recommendations
 
