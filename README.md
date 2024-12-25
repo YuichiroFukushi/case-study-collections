@@ -81,7 +81,7 @@ Based on these factors, the dataset **DOES NOT** meet the ROCCC criteria.
 
 **2.** I will begin by transferring the datasets to BigQuery to initiate the data cleaning process. The cleaning steps for each dataset are showned below:
 
-- 2.a `dailyactivity_merged`:
+- 2a. `dailyactivity_merged`:
   - I excluded the columns `LoggedActivitiesDistance` and `SedentaryActiveDistance` due to their limited entries, which made them irrelevant for the analysis. Out of 940 entries, `LoggedActivitiesDistance` had only 32 values, and `SedentaryActiveDistance` had 84. Additionally, I rounded all `FLOAT` data types to two decimal places to improve readability and maintain consistency.
 
 ```sql
@@ -112,7 +112,7 @@ FROM `verdant-legacy-441410-t2.FitBit_Fitness_Tracker_data.dailyactivity`
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes.
 
-- 2.b `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged`:
+- 2b. `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged`:
   - Since the information in `dailycalories_merged`, `dailyIntensities_merged`, and `dailysteps_merged` is already included in `dailyactivity_merged`, these datasets will be excluded from further processing. I used the `INNER JOIN` statement to check if the data matched based on user IDs and activity dates. Below is the query I executed:
 
 ```sql
@@ -184,7 +184,7 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 
 ***Note:*** The table above display only the first 5 rows for visualization purposes. The results from the selected columns across all 940 rows were consistent, indicating that the data is identical throughout.
 
-- 2.c - `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`:
+- 2c. - `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`:
   - For the datasets `hourlyintensities_merged`, `hourlycalories_merged`, and `hourlysteps_merged`, I addressed an issue with the `Activityhour` column, which contained both date and time in an AM/PM format unsupported by BigQuery. To resolve this, I used the `INT` function in Google Sheets to convert the date into an integer. This is necessary because Google Sheets stores dates as serial numbers, where the integer represents the number of days since a specific starting date. After converting the date into an integer, I used Google Sheets' `DATE` function to convert the integer back into a proper date format. For the time, I subtracted the `Activityhour` values from the newly separated `Activitydate` column and applied the `DATE` function to transform the result into a time format. I named this new column `Activityhour` and deleted the original `Activityhour` column to ensure the data was clean and avoid confusion. Before deleting the original columns, I used "Paste Special" to paste the newly separated date and time as values only, preventing any `#REF!` errors after the original columns were deleted. Below is the before and after transformation.
 
 **Before:**
@@ -239,7 +239,7 @@ AND activity.ActivityDate = steps.ActivityDay -- Note: The ActivityDate column i
 
 ***Note:*** The tables above display only the first 6 rows for visualization purposes.
 
-- 2.d `sleepday_merged`:
+- 2d. `sleepday_merged`:
   - I excluded the `TotalSleepRecords` column from the table as it is not sufficiently relevant to impact my analysis.
 
 ```sql
@@ -344,12 +344,10 @@ hourly_merged <- merge(hourly_merged, hourly_steps, by = c("Id", "ActivityDate",
 
 ***Note:*** The table above shows only the first 5 rows for a single ID number from the `dailyactivity` dataset.
 
-- 5.a Let's perform a quick overview of the three datasets—`daily_activity`, `hourly_merged`, and `sleep_day`—using the `summary()` function in R.
+- 5a. Let's perform a quick overview of the three datasets—`daily_activity`, `hourly_merged`, and `sleep_day`—using the `summary()` function in R.
 
 ```r
-daily_activity %>%
-    select(TotalSteps, TotalDistance, TrackerDistance, VeryActiveDistance, ModeratelyActiveDistance, LightActiveDistance, VeryActiveMinutes, FairlyActiveMinutes, SedentaryMinutes, Calories) %>%
-    summary()
+summary(daily_activity[c("TotalSteps", "TotalDistance", "TrackerDistance", "VeryActiveDistance", "ModeratelyActiveDistance", "LightActiveDistance", "VeryActiveMinutes", "FairlyActiveMinutes", "SedentaryMinutes", "Calories")])
 ```
 
 **Output:**
@@ -372,9 +370,7 @@ daily_activity %>%
 ***Note:*** I excluded the `Id` and `ActivityDate` columns from the summary since they are not necessary.
 
 ```r
-hourly_merged %>%
-    select(ActivityHour, TotalIntensity, AverageIntensity, Calories, StepTotal) %>%
-    summary()
+summary(hourly_merged[c("TotalIntensity", "AverageIntensity", "Calories", "StepTotal")])
 ```
 
 **Output:**
@@ -390,4 +386,24 @@ hourly_merged %>%
 
 ***Note:*** I excluded the `Id`, `ActivityDate`, and `ActivityHour` columns from the summary since they are not necessary.
 
+```r
+summary(sleep_day[c("TotalSleepRecords", "TotalMinutesAsleep", "TotalTimeInBed")])
+```
+
+**Output:**
+```r
+# "sleep_day" Dataset Summary
+| Variable               | Min.   | 1st Qu. | Median | Mean  | 3rd Qu. | Max.   |
+|------------------------|--------|---------|--------|-------|---------|--------|
+| **TotalSleepRecords**  | 1.00   | 1.00    | 1.00   | 1.12  | 1.00    | 3.00   |
+| **TotalMinutesAsleep** | 58.00  | 361.00  | 433.00 | 419.5 | 490.00  | 796.00 |
+| **TotalTimeInBed**     | 61.00  | 403.00  | 463.00 | 458.6 | 526.00  | 961.00 |
+ 
+```
+- 5b. Here are the key takeaways from the summary data above:
+ Insights derived from the summaries:
+    - The average number of steps taken by users is 7,638, while the general recommendation for maintaining good health is 8,000 to 10,000 steps per day.
+    - Users, on average, engage more in light physical activity than in very active or moderately active activities, suggesting that light activity is the most prevalent form of exercise in the dataset.
+    - The data reveals that users, on average, spend the majority of their time sedentary (991.2 minutes), with minimal participation in very active (21.16 minutes) or moderately active (13.56 minutes) activities.
+    - The mean calorie consumption is 2,304. Generally, women require 1,600 to 2,400 calories daily, while men need 2,000 to 3,000 calories. For more details, refer to the [Dietary Guidelines for Americans 2020-2025](https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf).
 
