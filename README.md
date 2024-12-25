@@ -477,7 +477,7 @@ ggplot(daily_activity_filtered, aes(x = Distance, fill = ActiveDistance)) +
 
 <img width="1000" alt="Distribution of Active Distance" src="https://github.com/user-attachments/assets/26d8a1a6-e4dc-48e6-8288-d0bac2cd2ad2" />
 
-The histogram above shows that a greater number of users cover more distance under `LightActiveDistance`.
+The histogram above shows that **a greater number of users cover more distance under `LightActiveDistance`.**
 
 3. We aim to estimate the time it takes for a user to fall asleep while in bed. Due to data limitations, we can only assume that `TimeAwakeBeforeSleep` — the difference between `TotalTimeInBed` and `TotalMinutesAsleep` — represents the time spent in bed before falling asleep, without accounting for wake periods or other factors.
 
