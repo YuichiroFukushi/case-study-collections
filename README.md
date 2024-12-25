@@ -400,10 +400,15 @@ summary(sleep_day[c("TotalSleepRecords", "TotalMinutesAsleep", "TotalTimeInBed")
 | **TotalTimeInBed**     | 61.00  | 403.00  | 463.00 | 458.6 | 526.00  | 961.00 |
  
 ```
-- 5b. Here are the key takeaways from the summary data above:
- Insights derived from the summaries:
-    - The average number of steps taken by users is 7,638, while the general recommendation for maintaining good health is 8,000 to 10,000 steps per day.
-    - Users, on average, engage more in light physical activity than in very active or moderately active activities, suggesting that light activity is the most prevalent form of exercise in the dataset.
-    - The data reveals that users, on average, spend the majority of their time sedentary (991.2 minutes), with minimal participation in very active (21.16 minutes) or moderately active (13.56 minutes) activities.
-    - The mean calorie consumption is 2,304. Generally, women require 1,600 to 2,400 calories daily, while men need 2,000 to 3,000 calories. For more details, refer to the [Dietary Guidelines for Americans 2020-2025](https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf).
+**6.** Here are the key takeaways from the summary data above:
+
+- On average, users take 7,638 steps per day, which is below the CDC’s recommended 8,000 to 10,000 steps for maintaining good health.
+- Users primarily engage in light physical activity, with this being the most common form of exercise compared to very active or moderately active sessions.
+- Users spend most of their time sedentary, averaging 991.2 minutes, and participate minimally in very active (21.16 minutes) or moderately active (13.56 minutes) activities.
+- The average calorie consumption is 2,304, which aligns with the general daily calorie requirements of 1,600 to 2,400 for women and 2,000 to 3,000 for men, as outlined in the Dietary Guidelines for Americans 2020-2025.
+- On average, users burn 97.39 calories per hour.
+- Users take an average of 320.2 steps per hour.
+- Sleep duration ranges from 58 to 796 minutes, with an average of 419.5 minutes (around 7 hours).
+- The total time spent in bed varies from 61 to 961 minutes, with an average of 458.6 minutes (7.64 hours), which includes both sleep and wake periods.
+
 
