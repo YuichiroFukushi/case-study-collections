@@ -531,6 +531,8 @@ These trends suggest that Bellabeat customers, who are likely focused on health 
 
 These trends suggests that Bellabeat can tailor their marketing strategy to show that even light physical activity can lead to an overall healthier life, as most of the users in the data appear to be less suited for moderate or high-intensity fitness. By highlighting the impact a distance metric has on the steps they take and calories they burn, and providing attainable goals in the form of milestones and streaks, users are motivated to achieve their goals in fitness. In idle periods before sleep, they could include how users are sleeping and advice on how to improve, or even soothing sounds to help them rest better. Meanwhile, daily goal trackers will keep users engaged, prevent them from going off course, and provide them enough time to make adjustments if necessary.
 
-## Thank you for taking the time to review this case study. 🙏 Your attention and insights are greatly appreciated. I look forward to any feedback and further discussions. 😊🚀
+---
+
+## FIN 🙇🏻‍♂️
 
 
