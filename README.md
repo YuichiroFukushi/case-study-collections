@@ -411,4 +411,26 @@ summary(sleep_day[c("TotalSleepRecords", "TotalMinutesAsleep", "TotalTimeInBed")
 - Sleep duration ranges from 58 to 796 minutes, with an average of 419.5 minutes (around 7 hours).
 - The total time spent in bed varies from 61 to 961 minutes, with an average of 458.6 minutes (7.64 hours), which includes both sleep and wake periods.
 
+### 📈 Data Visualization
 
+1. I want to determine if the number of steps taken by the user affects the calories burned, as this data will be important for our recommendations later.
+
+```r
+ggplot(data = daily_activity, aes(x = TotalSteps, y = Calories)) +
+  geom_point(color = "skyblue", size = 2, alpha = 0.7) + 
+  geom_smooth(method = "lm", color = "darkblue", se = FALSE) +
+  labs(title = "Total Steps vs. Calories", x = "Total Steps", y = "Calories") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10)
+  )
+```
+
+**Output:**
+<img width="558" alt="Total Steps vs  Calories" src="https://github.com/user-attachments/assets/68461da7-3706-4d83-aab4-f1be9c6ce22f" />
+
+The scatterplot above shows a positive correlation between total steps and calories burned, indicating that as the number of steps increases, the calories burned also increase.
+
+2. 
