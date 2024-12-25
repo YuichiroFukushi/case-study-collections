@@ -511,3 +511,26 @@ The histogram above indicates that **most users spend at least 50 minutes in bed
 
 ### 🎯 Recommendations
 
+Let's revisit the business tasks provided by our stakeholders, which are:
+
+1. What are some trends in smart device usage?
+2. How could these trends apply to Bellabeat customers?
+3. How can these trends help influence Bellabeat marketing strategy?
+
+Now, let's address them one by one:
+
+### 1. What are some trends in smart device usage?
+
+Some trends in smart device usage include a positive correlation between steps, distance, and calories burned, most users spending at least 50 minutes in bed before falling asleep, and a greater number of users covering more distance during light activity.
+
+### 2. How could these trends apply to Bellabeat customers?
+
+These trends suggest that Bellabeat customers, who are likely focused on health and wellness, could benefit from features that encourage more light physical activity, as this seems to be the most common activity level. By highlighting the positive relationship between steps, distance, and calories burned, Bellabeat could provide tailored recommendations to help users set achievable fitness goals and track their progress. Additionally, the insight that most users spend at least 50 minutes in bed before falling asleep could guide the development of features aimed at improving sleep quality, such as sleep tracking and personalized sleep tips. Understanding these trends allows Bellabeat to refine its product offerings and marketing strategies to better align with customers’ habits and goals.
+
+### 3. How can these trends help influence Bellabeat marketing strategy?
+
+These trends suggests that Bellabeat can tailor their marketing strategy to show that even light physical activity can lead to an overall healthier life, as most of the users in the data appear to be less suited for moderate or high-intensity fitness. By highlighting the impact a distance metric has on the steps they take and calories they burn, and providing attainable goals in the form of milestones and streaks, users are motivated to achieve their goals in fitness. In idle periods before sleep, they could include how users are sleeping and advice on how to improve, or even soothing sounds to help them rest better. Meanwhile, daily goal trackers will keep users engaged, prevent them from going off course, and provide them enough time to make adjustments if necessary.
+
+## Thank you for taking the time to review this case study. 🙏 Your attention and insights are greatly appreciated. I look forward to any feedback and further discussions. 😊🚀
+
+
