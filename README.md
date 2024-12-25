@@ -450,7 +450,7 @@ ggplot(data = daily_activity, aes(x = TotalDistance, y = Calories)) +
   <img src="https://github.com/user-attachments/assets/c5009ed6-023a-4b38-909d-60c36fe4f2fb" width="500" />
 </div>
 
-The scatterplot above shows a positive correlation between the number of steps taken, the total distance covered, and calories burned, indicating that as both the number of steps and distance increase, the calories burned also increase.
+The scatterplot above shows a positive correlation between the number of steps taken, the total distance covered, and calories burned, indicating that **as both the number of steps and distance increase, the calories burned also increase.**
 
 2. 
 
