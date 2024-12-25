@@ -413,7 +413,7 @@ summary(sleep_day[c("TotalSleepRecords", "TotalMinutesAsleep", "TotalTimeInBed")
 
 ### 📈 Data Visualization
 
-1. I want to determine if the number of steps taken by the user affects the calories burned, as this data will be important for our recommendations later.
+1. I want to determine if the number of steps taken and the total distance covered by the user affect the calories burned, as this data will be important for our recommendations later.
 
 ```r
 # Total Steps vs. Calories
@@ -431,7 +431,7 @@ ggplot(data = daily_activity, aes(x = TotalSteps, y = Calories)) +
 # Total Distance vs. Calories
 ggplot(data = daily_activity, aes(x = TotalDistance, y = Calories)) +
   geom_point(color = "lightgreen", size = 3, alpha = 0.8) + 
-  geom_smooth(method = "lm", color = "darkgreen", se = TRUE) +
+  geom_smooth(method = "lm", color = "darkgreen", se = FALSE) +
   labs(title = "Total Distance vs. Calories", x = "Total Distance ", y = "Calories") +
   theme_minimal(base_size = 14) +
   theme(
@@ -447,10 +447,10 @@ ggplot(data = daily_activity, aes(x = TotalDistance, y = Calories)) +
 
 <div style="display: flex; justify-content: space-around;">
   <img src="https://github.com/user-attachments/assets/68461da7-3706-4d83-aab4-f1be9c6ce22f" width="500" />
-  <img src="https://github.com/user-attachments/assets/3a6c57c4-bf2a-46cc-af25-300c359928ff" width="500" />
+  <img src="https://github.com/user-attachments/assets/c5009ed6-023a-4b38-909d-60c36fe4f2fb" width="500" />
 </div>
 
-The scatterplot above shows a positive correlation between total steps and calories burned, indicating that as the number of steps increases, the calories burned also increase.
+The scatterplot above shows a positive correlation between the number of steps taken, the total distance covered, and calories burned, indicating that as both the number of steps and distance increase, the calories burned also increase.
 
 2. 
 
